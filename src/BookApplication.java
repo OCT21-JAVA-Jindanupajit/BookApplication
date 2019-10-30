@@ -22,5 +22,14 @@ public class BookApplication {
         book.setInStock(false);
         price = book.getPrice(5);
         System.out.printf("Price for 5 books when it is out of stock is %s\n\n",(price > 0)?price:"<Out of stock>");
+
+        BookDB bookDB = new BookDB(543210003L);
+
+        System.out.println("Database\n--------");
+        bookDB.forEach( (SKU,eachBook) -> {
+            System.out.printf("SKU: %d\nBook Detail:\n%s\n",SKU,eachBook);
+        } );
+
+        System.out.printf("The pointer points to this book: %s", bookDB.getBook());
     }
 }
