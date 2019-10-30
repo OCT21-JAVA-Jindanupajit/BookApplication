@@ -66,4 +66,11 @@ public class Book {
     public String toString() {
         return getDisplayText();
     }
+
+    public Float getPrice(int count) {
+        if (this.inStock)
+            return this.price*count;
+        else
+            return -1f;
+    }
 }
