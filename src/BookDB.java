@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class BookDB extends HashMap<Long,Book> {
+public class BookDB extends HashMap<String,Book> {
     private Book book;
 
     public BookDB() {
@@ -9,7 +9,7 @@ public class BookDB extends HashMap<Long,Book> {
         this.initialDatabase();
     }
 
-    public BookDB(Long SKU) {
+    public BookDB(String SKU) {
         this();
         if (this.containsKey(SKU))
             this.book = this.get(SKU);
@@ -28,32 +28,68 @@ public class BookDB extends HashMap<Long,Book> {
 
     protected void initialDatabase() {
         this.put(
-                543210001L,
+                "Java1001",
                 new Book(
-                        "Basic Java",
-                        "Victor",
-                        "Just a basic java book",
-                        100.00f,
-                        true
+                        "Java1001",
+                        "Head First Java",
+                        "Kathy Sierra and Bert Bates",
+                        "Easy to read Java workbook",
+                        47.50f,
+                        false
                     )
                 );
         this.put(
-                543210002L,
+                "Java1002",
                 new Book(
-                        "Advance Java",
-                        "Alton",
-                        "Just a advance java book",
-                        200.00f,
-                        true
+                        "Java1002",
+                        "Thinking in Java",
+                        "Bruce Eckel",
+                        "Details about Java under the hood",
+                        20.0f,
+                        false
                 )
         );
         this.put(
-                543210003L,
+                "Orcl1003",
                 new Book(
-                        "Spring Boot",
-                        "Alton",
-                        "Just a java Spring boot book",
-                        300.00f,
+                        "Orcl1003",
+                        "OCP: Oracle Certified Professional Java SE",
+                        "Jeanne Boyarsky",
+                        "Everything you need to know in one place",
+                        45.00f,
+                        false
+                )
+        );
+        this.put(
+                "Python1004",
+                new Book(
+                        "Python1004",
+                        "Automate the Boring Stuff with Python",
+                        "Al Sweigart",
+                        "Fun with Python",
+                        10.50f,
+                        false
+                )
+        );
+        this.put(
+                "Zombie1005",
+                new Book(
+                        "Zombie1005",
+                        "The Maker's Guide to the Zombie Apocalypse",
+                        "Simon Monk",
+                        "Defend Your Base with Simple Circuits, Arduino, and Raspberry Pi",
+                        16.50f,
+                        false
+                )
+        );
+        this.put(
+                "Rasp1006",
+                new Book(
+                        "Rasp1006",
+                        "Raspberry Pi Projects for the Evil Genius",
+                        "Donald Norris",
+                        "A dozen fiendishly fun projects for the Raspberry Pi!",
+                        14.75f,
                         false
                 )
         );
@@ -61,6 +97,13 @@ public class BookDB extends HashMap<Long,Book> {
 
     public Book getBook() {
         return book;
+    }
+
+    public Book getBookBySKU(String SKU) {
+        if (this.containsKey(SKU))
+            return this.get(SKU);
+        else
+            return null;
     }
 
 }
